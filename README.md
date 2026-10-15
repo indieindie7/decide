@@ -42,19 +42,23 @@ JSON. The two methods agree on 57 of 80 fields. Mean confidence is 0.94 where th
 
 | | letter mode | whole-option text mode |
 |---|---|---|
-| time per state | 0.56 s | 3.85 s |
-| accuracy | 0.892 | 0.542 |
-| ECE, no temperature | 0.083 | 0.419 |
-| ECE, one global T | 0.091 (T 2.12, worse) | 0.213 (T 7.43) |
-| ECE, one T per field | **0.067** | 0.153 |
+| time per state | 0.56 s | 3.84 s |
+| accuracy | 0.892 | **0.913** |
+| ECE, no temperature | 0.083 | 0.086 |
+| ECE, one global T | 0.091 (T 2.12, worse) | 0.066 (T 2.21) |
+| ECE, one T per field | 0.067 | **0.059** |
+| `action` field accuracy | 0.72 | 0.80 |
+| auto tier (share, accuracy) | 0.954, 0.908 | 0.967, 0.922 |
 
-- One global temperature did not help letter mode, because the fields need opposite corrections. The fitted per-field values are
+- One global temperature did not help letter mode (text-mode per-field T: action 2.77, target 1.02, stance 0.98, call_for_help 2.31), because the fields need opposite corrections. The fitted per-field values are
   action 2.89, stance 2.47, target 0.89 and call_for_help 0.69. `decide()` uses `T_field` when the calibration file has it.
 - **Calibration cannot fix confidently wrong answers.** `action` is right only 72% of the time while the model reports about 0.95
   confidence. Even calibrated, the auto tier covers 95% of decisions at an accuracy of 0.91, against a 0.95 target. That needs
   better prompt rules, not a temperature.
-- Whole-option text mode (teacher-forced scoring of each option's tokens) is currently **broken**. Its accuracy is the
-  same with mean or sum length normalisation, so there is a bug in the scoring code. Don't use it yet.
+- Whole-option text mode (teacher-forced scoring of each option's tokens) is the most accurate and the best calibrated,
+  but it is about 7x slower (one 1-token call per option token). Use letter mode when speed matters, text mode when accuracy does.
+- **Gotcha (fixed):** llama-server adds BOS to a *string* prompt but not to a *token-array* prompt. Without BOS, text mode
+  ignored the state and always gave the same option (0.54 accuracy). Tokenize with `add_special: true` when you send token ids.
 
 ## Licence
 MIT.

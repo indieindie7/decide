@@ -105,7 +105,8 @@ class Llama:
         return {o: p / z for o, p in probs.items()} if z else probs
 
     def _tok(self, text):
-        return lr.http(self.PORT, "/tokenize", {"content": text, "add_special": False, "parse_special": True})["tokens"]
+        # add_special: a token-array /completion prompt gets no BOS from the server (a string one does); without it the model ignores the state
+        return lr.http(self.PORT, "/tokenize", {"content": text, "add_special": True, "parse_special": True})["tokens"]
 
     def _text_dist(self, prefix, f, opts):
         """"Open Jev" mode: score each whole option as a continuation of the cached prefix (teacher forcing)."""
