@@ -50,9 +50,10 @@ JSON. The two methods agree on 57 of 80 fields. Mean confidence is 0.94 where th
 | `action` field accuracy | 0.72 | 0.80 |
 | auto tier (share, accuracy) | 0.954, 0.908 | 0.967, 0.922 |
 
-- One global temperature did not help letter mode (text-mode per-field T: action 2.77, target 1.02, stance 0.98, call_for_help 2.31), because the fields need opposite corrections. The fitted per-field values are
-  action 2.89, stance 2.47, target 0.89 and call_for_help 0.69. `decide()` uses `T_field` when the calibration file has it.
-- **Calibration cannot fix confidently wrong answers.** `action` is right only 72% of the time while the model reports about 0.95
+- One global temperature did not help letter mode, because the fields need opposite corrections. The fitted per-field values are
+  action 2.89, stance 2.47, target 0.89 and call_for_help 0.69 (text mode: action 2.77, target 1.02, stance 0.98, call_for_help 2.31).
+  `decide()` uses `T_field` when the calibration file has it.
+- **Calibration cannot fix confidently wrong answers.** In letter mode `action` is right only 72% of the time while the model reports about 0.95
   confidence. Even calibrated, the auto tier covers 95% of decisions at an accuracy of 0.91, against a 0.95 target. That needs
   better prompt rules, not a temperature.
 - Whole-option text mode (teacher-forced scoring of each option's tokens) is the most accurate and the best calibrated,
