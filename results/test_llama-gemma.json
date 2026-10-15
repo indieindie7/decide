@@ -1,0 +1,95 @@
+{
+ "backend": "llama-gemma",
+ "states": 20,
+ "fields": 80,
+ "decide_ms_per_state": 429,
+ "json_ms_per_state": 974,
+ "agreement": "57/80",
+ "json_empty": 0,
+ "unreadable": 0,
+ "mean_conf_agree": 0.938,
+ "mean_conf_disagree": 0.816,
+ "examples": [
+  {
+   "state": "enemy hp 46%, player hp 24%, distance far, player is attacking, allies nearby 0, health pickup on the floor nearby, enemy type brute",
+   "decide": {
+    "action": [
+     "circle",
+     0.5556582988678053
+    ],
+    "target": [
+     "player",
+     0.9928753925986697
+    ],
+    "stance": [
+     "aggressive",
+     0.6467937530694206
+    ],
+    "call_for_help": [
+     "no",
+     0.9918680620784582
+    ]
+   },
+   "json": {
+    "action": "circle",
+    "target": "player",
+    "stance": "cautious",
+    "call_for_help": "no"
+   }
+  },
+  {
+   "state": "enemy hp 79%, player hp 12%, distance close, player is attacking, allies nearby 0, health pickup none, enemy type brute",
+   "decide": {
+    "action": [
+     "block",
+     0.8709420000033249
+    ],
+    "target": [
+     "player",
+     0.9998830384139364
+    ],
+    "stance": [
+     "aggressive",
+     0.9835944646301491
+    ],
+    "call_for_help": [
+     "no",
+     0.9969833650518886
+    ]
+   },
+   "json": {
+    "action": "block",
+    "target": "player",
+    "stance": "cautious",
+    "call_for_help": "no"
+   }
+  },
+  {
+   "state": "enemy hp 13%, player hp 35%, distance touching, player is holding a pipe, allies nearby 3, health pickup on the floor nearby, enemy type knife thug",
+   "decide": {
+    "action": [
+     "block",
+     0.7135597081665365
+    ],
+    "target": [
+     "player",
+     0.9931508207943625
+    ],
+    "stance": [
+     "panicked",
+     0.9788524248094043
+    ],
+    "call_for_help": [
+     "yes",
+     0.8922788040651611
+    ]
+   },
+   "json": {
+    "action": "attack",
+    "target": "player",
+    "stance": "aggressive",
+    "call_for_help": "no"
+   }
+  }
+ ]
+}

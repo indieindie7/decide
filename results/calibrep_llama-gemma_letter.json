@@ -1,0 +1,46 @@
+{
+ "backend": "llama-gemma",
+ "mode": "letter",
+ "states": 120,
+ "unreadable": 0,
+ "ms_per_state": 558,
+ "fit_n": 240,
+ "eval_n": 240,
+ "T": 2.12,
+ "auto_threshold": 0.6184952052682497,
+ "target_acc": 0.95,
+ "eval_raw": {
+  "n": 240,
+  "acc": 0.8916666666666667,
+  "mean_conf": 0.9707303810065065,
+  "brier": 0.19287181780520354,
+  "ece": 0.08323275621675091
+ },
+ "eval_calibrated": {
+  "n": 240,
+  "acc": 0.8916666666666667,
+  "mean_conf": 0.9079063217362359,
+  "brier": 0.19557963354619706,
+  "ece": 0.09130302029621402
+ },
+ "routes": {
+  "auto": {
+   "share": 0.963,
+   "acc": 0.909
+  },
+  "ask": {
+   "share": 0.0,
+   "acc": null
+  },
+  "escalate": {
+   "share": 0.037,
+   "acc": 0.444
+  }
+ },
+ "per_field_acc": {
+  "action": 0.758,
+  "target": 0.975,
+  "stance": 0.95,
+  "call_for_help": 0.95
+ }
+}

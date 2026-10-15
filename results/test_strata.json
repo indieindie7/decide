@@ -1,0 +1,95 @@
+{
+ "backend": "strata",
+ "states": 20,
+ "fields": 80,
+ "decide_ms_per_state": 3035,
+ "json_ms_per_state": 1534,
+ "agreement": "42/80",
+ "json_empty": 0,
+ "unreadable": 0,
+ "mean_conf_agree": null,
+ "mean_conf_disagree": null,
+ "examples": [
+  {
+   "state": "enemy hp 46%, player hp 24%, distance far, player is attacking, allies nearby 0, health pickup on the floor nearby, enemy type brute",
+   "decide": {
+    "action": [
+     "attack",
+     null
+    ],
+    "target": [
+     "none",
+     null
+    ],
+    "stance": [
+     "cautious",
+     null
+    ],
+    "call_for_help": [
+     "no",
+     null
+    ]
+   },
+   "json": {
+    "action": "retreat",
+    "target": "pickup item",
+    "stance": "cautious",
+    "call_for_help": "no"
+   }
+  },
+  {
+   "state": "enemy hp 79%, player hp 12%, distance close, player is attacking, allies nearby 0, health pickup none, enemy type brute",
+   "decide": {
+    "action": [
+     "attack",
+     null
+    ],
+    "target": [
+     "player",
+     null
+    ],
+    "stance": [
+     "aggressive",
+     null
+    ],
+    "call_for_help": [
+     "yes",
+     null
+    ]
+   },
+   "json": {
+    "action": "block",
+    "target": "player",
+    "stance": "cautious",
+    "call_for_help": "no"
+   }
+  },
+  {
+   "state": "enemy hp 13%, player hp 35%, distance touching, player is holding a pipe, allies nearby 3, health pickup on the floor nearby, enemy type knife thug",
+   "decide": {
+    "action": [
+     "attack",
+     null
+    ],
+    "target": [
+     "player",
+     null
+    ],
+    "stance": [
+     "panicked",
+     null
+    ],
+    "call_for_help": [
+     "yes",
+     null
+    ]
+   },
+   "json": {
+    "action": "retreat",
+    "target": "pickup item",
+    "stance": "panicked",
+    "call_for_help": "yes"
+   }
+  }
+ ]
+}

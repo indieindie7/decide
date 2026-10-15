@@ -1,0 +1,5 @@
+__pycache__/
+*.log
+calib_*.json
+calibraw_*.json
+server.log
